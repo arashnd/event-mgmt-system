@@ -10,7 +10,7 @@ options = YAML.load_file(file)
 DataMapper.setup(:default, options['development'])
 
 
-require './model'
+require './app/models/user'
 
 DataMapper.auto_migrate!
 
@@ -22,8 +22,9 @@ if User.count == 0
   @user.save
 end
 
-require './app'
-require './auth'
+require './app/controllers/application_controller'
+require './app/controllers/authentication_controller'
+require './app/controllers/website_controller'
 
 
 
@@ -34,7 +35,7 @@ use Rack::Session::Cookie, secret: "hkjhcklsdckldlc"
 
 use Warden::Manager do |config|
   config.scope_defaults :default, strategies: [:password], action: 'auth/unauthenticated'
-  config.failure_app = Auth
+  config.failure_app = AuthenticationController
 
   config.serialize_into_session { |user| user.id }
   config.serialize_from_session { |id| User.get(id) }
@@ -63,4 +64,5 @@ Warden::Manager.before_failure do |env, options|
 end
 
 
-run App
+map('/'){ run WebsiteController }
+map('/auth') {run AuthenticationController}

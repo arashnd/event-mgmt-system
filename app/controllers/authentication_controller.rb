@@ -1,28 +1,18 @@
-class App < Sinatra::Base
+class AuthenticationController < ApplicationController
 
-  register Sinatra::Flash
+  get '/unauthenticated' do
+    session[:return_to] = env['warden.options'][:attempted_path] if session[:return_to].nil?
 
-  helpers do
-    def current_user
-      env['warden'].user
-    end
+    flash[:error] = env['warden.options'][:message] || "You must be logged in"
+
+    redirect '/login'
   end
 
-  get '/' do
-    erb :index
-  end
-
-  get '/protected' do
-    env['warden'].authenticate!
-    puts "protected"
-    erb :protected
-  end
-
-  get '/auth/login' do
+  get '/login' do
     erb :login
   end
 
-  post '/auth/login' do
+  post '/login' do
     env['warden'].authenticate!
 
     flash[:success] = "Successfully logged in"
@@ -32,10 +22,9 @@ class App < Sinatra::Base
     else
       redirect session[:return_to]
     end
-
   end
 
-  get '/auth/logout' do
+  get '/logout' do
     env['warden'].logout
     flash[:success] = "Logged out successfully."
     puts "logged out"
