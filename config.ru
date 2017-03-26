@@ -12,7 +12,7 @@ DataMapper.setup(:default, options['development'])
 
 require './app/models/user'
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 if User.count == 0
   @user = User.create(email: "arash@naveed.com")
@@ -23,9 +23,7 @@ if User.count == 0
 end
 
 require './app/controllers/application_controller'
-require './app/controllers/authentication_controller'
-require './app/controllers/website_controller'
-
+Dir['./app/controllers/*.rb'].each { |file| require file }
 
 
 
@@ -34,7 +32,7 @@ require './app/controllers/website_controller'
 use Rack::Session::Cookie, secret: "hkjhcklsdckldlc"
 
 use Warden::Manager do |config|
-  config.scope_defaults :default, strategies: [:password], action: 'auth/unauthenticated'
+  config.scope_defaults :default, strategies: [:password], action: 'unauthenticated'
   config.failure_app = AuthenticationController
 
   config.serialize_into_session { |user| user.id }
@@ -66,3 +64,4 @@ end
 
 map('/'){ run WebsiteController }
 map('/auth') {run AuthenticationController}
+map('/users') {run UsersController}

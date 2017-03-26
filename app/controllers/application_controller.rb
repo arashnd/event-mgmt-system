@@ -5,5 +5,6 @@ class ApplicationController < Sinatra::Base
     end
   end
   set :views, File.expand_path('../../views', __FILE__)
+
   register Sinatra::Flash
 end

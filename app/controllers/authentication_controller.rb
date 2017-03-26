@@ -5,7 +5,7 @@ class AuthenticationController < ApplicationController
 
     flash[:error] = env['warden.options'][:message] || "You must be logged in"
 
-    redirect '/login'
+    redirect '/auth/login'
   end
 
   get '/login' do

@@ -8,9 +8,11 @@
 
     <ul>
       <% if current_user %>
+      <h1><%= current_user.email %></h1>
         <li>(<%= current_user.first_name %>)<a href="/auth/logout">Logout</a></li>
       <% else %>
         <li><a href="/auth/login">Login</a></li>
+        <li><a href="/users/new/register">Register</a></li>
       <% end %>
       <li><a href="/protected">Protected</a></li>
     </ul>
@@ -21,7 +23,9 @@
     <% if flash[:error] %>
       <%= flash[:error] %>
     <% end %>
+
     <%= yield %>
+
 
   </body>
 </html>
