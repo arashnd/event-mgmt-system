@@ -1,10 +1,31 @@
 require 'bundler'
 Bundler.require
 
+# Setup Database
+DataMapper::Logger.new($stdout, :debug)
+
+file = File.expand_path('./config/database.yml')
+options = YAML.load_file(file)
+
+DataMapper.setup(:default, options['development'])
+
 
 require './model'
+
+DataMapper.auto_migrate!
+
+if User.count == 0
+  @user = User.create(email: "arash@naveed.com")
+  @user.password = "password"
+  @user.first_name = "Arash"
+  @user.last_name = "Naveed"
+  @user.save
+end
+
 require './app'
 require './auth'
+
+
 
 
 # Use warden
@@ -40,5 +61,6 @@ end
 Warden::Manager.before_failure do |env, options|
   env['REQUEST_METHOD'] = 'GET'
 end
+
 
 run App

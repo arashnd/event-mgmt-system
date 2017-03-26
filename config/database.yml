@@ -1,0 +1,6 @@
+development:
+  adapter:  postgres
+  database:  event_app_development
+  pool: 2
+  username: event_app
+  password: password

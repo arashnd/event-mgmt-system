@@ -9,7 +9,6 @@ gem 'warden', '1.2.6'
 gem 'shotgun', '0.9.1'
 
 gem 'dm-core', '1.2.1'
-gem 'dm-sqlite-adapter', '1.2.0'
 gem 'dm-postgres-adapter','1.2.0'
 gem 'dm-migrations', '1.2.0'
 gem 'dm-serializer', '1.2.2'
