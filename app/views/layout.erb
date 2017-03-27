@@ -7,6 +7,15 @@
   <body>
 
     <ul>
+      <% if admin_user? %>
+        <li>admin</li>
+      <% else %>
+        <li>client</li>
+      <% end %>
+    </ul>
+
+
+    <ul>
       <% if current_user %>
       <h1><%= current_user.email %></h1>
         <li>(<%= current_user.first_name %>)<a href="/auth/logout">Logout</a></li>

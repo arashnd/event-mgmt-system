@@ -1,6 +1,6 @@
 class AuthenticationController < ApplicationController
 
-  get '/unauthenticated' do
+  post '/unauthenticated' do
     session[:return_to] = env['warden.options'][:attempted_path] if session[:return_to].nil?
 
     flash[:error] = env['warden.options'][:message] || "You must be logged in"

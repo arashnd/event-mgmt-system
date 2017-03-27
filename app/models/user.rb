@@ -4,6 +4,7 @@ class User
   property :id, Serial
   property :first_name, String, required: true
   property :last_name, String, required: true
+  property :role, Enum[:admin, :user], default: :user
   property :email, String, required: true, format: :email_address, unique: true
   property :password, BCryptHash, required: true
 

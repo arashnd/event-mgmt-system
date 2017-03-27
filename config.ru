@@ -9,19 +9,13 @@ options = YAML.load_file(file)
 
 DataMapper.setup(:default, options['development'])
 
+# Load all models
 
-require './app/models/user'
+Dir['./app/models/*.rb'].each { |file| require file }
 
 DataMapper.auto_upgrade!
 
-if User.count == 0
-  @user = User.create(email: "arash@naveed.com")
-  @user.password = "password"
-  @user.first_name = "Arash"
-  @user.last_name = "Naveed"
-  @user.save
-end
-
+# Load all controllers
 require './app/controllers/application_controller'
 Dir['./app/controllers/*.rb'].each { |file| require file }
 
@@ -58,10 +52,11 @@ Warden::Strategies.add(:password) do
 end
 
 Warden::Manager.before_failure do |env, options|
-  env['REQUEST_METHOD'] = 'GET'
+  env['REQUEST_METHOD'] = 'POST'
 end
 
-
+# routes
 map('/'){ run WebsiteController }
 map('/auth') {run AuthenticationController}
 map('/users') {run UsersController}
+map('/admin') {run AdminController}
