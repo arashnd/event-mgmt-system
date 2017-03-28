@@ -8,6 +8,11 @@ class AuthenticationController < ApplicationController
     redirect '/auth/login'
   end
 
+  post '/restricted' do
+    flash[:error] = "Make sure you are admin"
+    redirect '/auth/admin/login'
+  end
+
   get '/login' do
     erb :login
   end
@@ -23,6 +28,18 @@ class AuthenticationController < ApplicationController
       redirect session[:return_to]
     end
   end
+
+  get '/admin/login' do
+    erb :login_admin
+  end
+
+  post '/admin/login' do
+    env['warden'].authenticate! :admin, scope: :sudo
+    flash[:success] = "Welcome back admin"
+
+    redirect '/'
+  end
+
 
   get '/logout' do
     env['warden'].logout

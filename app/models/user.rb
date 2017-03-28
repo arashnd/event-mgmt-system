@@ -16,4 +16,8 @@ class User
     self.password == provided_password
   end
 
+  def authenticate_admin(provided_password)
+    (self.password == provided_password) && (self.role == :admin)
+  end
+
 end

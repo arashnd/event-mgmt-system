@@ -27,6 +27,8 @@ use Rack::Session::Cookie, secret: "hkjhcklsdckldlc"
 
 use Warden::Manager do |config|
   config.scope_defaults :default, strategies: [:password], action: 'unauthenticated'
+  config.scope_defaults :sudo, strategies: [:admin], action: 'restricted'
+
   config.failure_app = AuthenticationController
 
   config.serialize_into_session { |user| user.id }
@@ -51,6 +53,27 @@ Warden::Strategies.add(:password) do
   end
 end
 
+# admin strategy##########
+
+Warden::Strategies.add(:admin) do
+  def valid?
+    params['user'] && params['user']['email'] && params['user']['password']
+  end
+
+  def authenticate!
+    user = User.first(email: params['user']['email'])
+    if user.nil?
+      fail("Email does not exists")
+    elsif user.authenticate_admin(params['user']['password'])
+      success!(user)
+    else
+      fail!("Invalid email password combination")
+    end
+  end
+end
+
+##########################
+
 Warden::Manager.before_failure do |env, options|
   env['REQUEST_METHOD'] = 'POST'
 end
@@ -60,3 +83,4 @@ map('/'){ run WebsiteController }
 map('/auth') {run AuthenticationController}
 map('/users') {run UsersController}
 map('/admin') {run AdminController}
+map('/dashboard/venues') {run VenuesController}

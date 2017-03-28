@@ -2,7 +2,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def current_user
-      env['warden'].user
+      env['warden'].user || env['warden'].user(:sudo)
     end
 
     def admin_user?

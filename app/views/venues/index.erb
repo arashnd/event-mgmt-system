@@ -1,0 +1,13 @@
+<h2>Venues</h2>
+<a href="/dashboard/venues/new">Add Venue</a>
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <% @venues.each do |venue| %>
+      <tr>
+        <td><%= venue.name %></td>
+        <td><a href="/dashboard/venues/<%= venue.id %>/show">Show</a></td>
+      </tr>
+    <% end %>
+  </table>
