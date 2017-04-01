@@ -1,0 +1,24 @@
+<h2>Book an Event</h2>
+
+<p><%= @venue.name  %> <%= @venue.city.name %></p>
+
+<form class="" action="/dashboard/events/<%= @venue.id %>/book" method="post">
+
+  <div class="">
+    <label for="event[event_type]">Birthday Party</label>
+    <input type="radio" name="event[event_type]" value="birthday">
+    <label for="event[event_type]">Wedding Party</label>
+    <input type="radio" name="event[event_type]" value="wedding">
+  </div>
+  <div class="">
+    <select class="" name="event[slot]">
+      <% %w(morning evening full_day).each do |slot| %>
+        <option value="<%= slot %>"><%= slot.capitalize.tr('_', ' ') %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="">
+    <input type="submit" name="" value="Book">
+  </div>
+
+</form>

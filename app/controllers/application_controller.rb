@@ -8,6 +8,15 @@ class ApplicationController < Sinatra::Base
     def admin_user?
       current_user.role == :admin if current_user
     end
+
+    def auth
+      {
+        cloud_name: 'fypeventapp',
+        api_key: '942528919821819',
+        api_secret: 'xYZNKn9PgSlDBW9cPPbgSw-WJ6M'
+      }
+    end
+
   end
 
   set :views, File.expand_path('../../views', __FILE__)

@@ -9,6 +9,7 @@ class VenuesController < ApplicationController
   end
 
   get '/new' do
+    @cities = City.all
     erb :'venues/new'
   end
 

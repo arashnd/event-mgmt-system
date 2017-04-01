@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'sinatra', '1.4.7'
 gem 'sinatra-flash', '0.3.0', require: 'sinatra/flash'
 gem 'bcrypt-ruby', '3.1.5'
+gem 'activesupport', '4.2.6', require: 'active_support'
+gem 'actionview', '4.2.6', require: 'action_view'
+gem 'cloudinary', '1.2.4'
 
 
 gem 'warden', '1.2.6'

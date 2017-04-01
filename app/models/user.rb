@@ -8,6 +8,8 @@ class User
   property :email, String, required: true, format: :email_address, unique: true
   property :password, BCryptHash, required: true
 
+  has n, :events
+
   attr_accessor :password_confirmation
   validates_confirmation_of :password, :confirm => :password_confirmation
   validates_length_of :password_confirmation, min: 6

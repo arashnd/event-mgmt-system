@@ -7,4 +7,7 @@ class Venue
   property :location, String
   property :desciption, Text
 
+  has n, :events
+  belongs_to :city
+
 end

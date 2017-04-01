@@ -1,4 +1,4 @@
-class FooditemController < ApplicationController
+class FooditemsController < ApplicationController
 
   before do
     env['warden'].authenticate! :admin, scope: :sudo

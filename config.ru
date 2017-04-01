@@ -1,8 +1,16 @@
 require 'bundler'
 Bundler.require
 
+# Cloudinary
+
+Cloudinary.config do |config|
+    config.cloud_name = 'fypeventapp',
+    config.api_key = '942528919821819',
+    config.api_secret = 'xYZNKn9PgSlDBW9cPPbgSw-WJ6M'
+end
+
 # Setup Database
-DataMapper::Logger.new($stdout, :debug)
+#DataMapper::Logger.new($stdout, :debug)
 
 file = File.expand_path('./config/database.yml')
 options = YAML.load_file(file)
@@ -13,11 +21,14 @@ DataMapper.setup(:default, options['development'])
 
 Dir['./app/models/*.rb'].each { |file| require file }
 
+DataMapper.finalize
 DataMapper.auto_upgrade!
 
 # Load all controllers
 require './app/controllers/application_controller'
 Dir['./app/controllers/*.rb'].each { |file| require file }
+
+
 
 
 
@@ -84,4 +95,6 @@ map('/auth') {run AuthenticationController}
 map('/users') {run UsersController}
 map('/admin') {run AdminController}
 map('/dashboard/venues') {run VenuesController}
-map('/dashboard/fooditems') {run FooditemController}
+map('/dashboard/fooditems') {run FooditemsController}
+map('/dashboard/cities') { run CitiesController }
+map('/dashboard/events') { run EventsController }

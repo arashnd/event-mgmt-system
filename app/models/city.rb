@@ -3,4 +3,6 @@ class City
 
   property :id, Serial
   property :name, String
+
+  has n, :venues
 end

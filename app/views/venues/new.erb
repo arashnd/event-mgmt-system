@@ -4,8 +4,12 @@
     <input type="text" name="venue[name]" value="">
   </div>
   <div class="">
-    <label for="venue[city]">City</label><br />
-    <input type="text" name="venue[city]" value="">
+    <label for="venue[city_id]">City</label><br />
+    <select class="" name="venue[city_id]">
+      <% @cities.each do |city| %>
+        <option value="<%= city.id %>"><%= city.name %></option>
+      <% end %>
+    </select>
   </div>
   <div class="">
     <label for="venue[location]">Location</label><br />
