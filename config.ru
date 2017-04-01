@@ -84,3 +84,4 @@ map('/auth') {run AuthenticationController}
 map('/users') {run UsersController}
 map('/admin') {run AdminController}
 map('/dashboard/venues') {run VenuesController}
+map('/dashboard/fooditems') {run FooditemController}

@@ -1,0 +1,14 @@
+<h2>Food Items</h2>
+
+<a href="/dashboard/fooditems/new">Add fooditem</a>
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <% @fooditems.each do |fooditem| %>
+      <tr>
+        <td><%= fooditem.name %></td>
+        <td><a href="/dashboard/fooditems/<%= fooditem.id %>/show">Show</a></td>
+      </tr>
+    <% end %>
+  </table>

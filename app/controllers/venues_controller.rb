@@ -13,7 +13,7 @@ class VenuesController < ApplicationController
   end
 
   post '/create' do
-    venue = Venue.create(params[:venue])
+    venue = Venue.new(params[:venue])
     if venue.save
       flash[:success] = "Venue created successfully ..."
       redirect '/dashboard/venues/'

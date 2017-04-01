@@ -1,9 +1,9 @@
 class SeatingArrangement
-  
+
   include DataMapper::Resource
 
   property :id, Serial
-  property :name, String
-  property :details, String
+  property :type, Enum[:theater, :class, :cluster, :ushaped]
+  property :capacity, Integer
 
 end

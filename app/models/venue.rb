@@ -3,9 +3,8 @@ class Venue
 
   property :id, Serial
   property :name, String
-  property :city, String
+  property :city_id, Integer
   property :location, String
   property :desciption, Text
-  property :capacity, Integer
-  property :since, Date
+
 end
