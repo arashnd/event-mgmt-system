@@ -1,0 +1,30 @@
+/*
+** Forms
+*/
+
+form {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 550px;
+    border: 1px solid #999999;
+    border-radius: 3px;
+    height: 40px;
+    outline: none;
+    padding: 6px 12px;
+    &:focus{
+      border-color: #000;
+    }
+  }
+}
+input[type="submit"] {
+  width: 550px;
+  height:  40px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+.form-group {
+  margin-bottom: 30px;
+}

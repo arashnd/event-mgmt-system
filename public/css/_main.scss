@@ -1,0 +1,48 @@
+/*
+** Main
+*/
+
+.main-content {
+  margin-bottom: $theme-margin;
+}
+
+.section-header {
+  margin-bottom: $baseline * 2;
+}
+
+.venue-thumb {
+  margin-bottom: $baseline;
+  position: relative;
+  img {
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px $color-border;
+    position: relative;
+    z-index: 100;
+
+    &:hover {
+      opacity: .2;
+    }
+  }
+}
+
+.hover-contents {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: $baseline * 2;
+
+  h3 {
+    color: $color-button-1;
+    margin-bottom: $baseline * 2;
+  }
+  p {
+    font-size: .75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+}

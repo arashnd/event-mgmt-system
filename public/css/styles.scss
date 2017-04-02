@@ -1,0 +1,20 @@
+//sass
+/*
+**Main Stylesheet**
+*/
+
+// Load variables
+@import 'variables';
+
+// Load typography styles
+@import 'typography';
+
+// Load elements styles
+@import 'buttons';
+@import 'forms';
+
+// Load section styles
+@import 'header';
+@import 'banner';
+@import 'main';
+// Load section styles

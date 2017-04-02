@@ -5,85 +5,67 @@
     <meta name="description" content="CS-619 FYP Online Event Management System">
     <meta name="author" content="F16026C510">
     <title>Festiva</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+
+
   </head>
   <body>
-    <!-- HEADER -->
-    <header class="main-container">
-      <div class="container">
+
+
+<!-- HEADER -->
+    <header class="main-header">
+      <div class="container-">
         <div class="row">
           <div class="col-lg-4">
-            <a href="/"><img src="public/images/logo.png" alt=""></a>
+            <a href="/" class="logo"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+            <form action="">
+              <input type="text" id="nav-input" placeholder="Enter your locatity">
+            </form>
           </div><!-- end col-lg-4 -->
-          <div class="col-lg-8">
-
+          <div class="col-lg-4  col-lg-offset-1">
+            <div class="nav mid-nav">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="">New</a></li>
+                <li><a href="">Browse Venues In</a></li>
+                <li><a href="">...</a></li>
+              </ul>
+            </div>
           </div>
+          <div class="col-lg-3">
+            <nav class="nav main-nav">
+              <ul>
+                <li><a href="/auth/login" class="btn-nav btn-login">Login</a></li>
+                <li><a href="/users/new/register" class="btn-nav btn-register">Register</a></li>
+              </ul>
+            </nav>
+          </div><!-- end col-lg-8 -->
         </div><!-- end row -->
       </div> <!-- end container -->
     </header>
 
+<!-- SLIDER -->
 
+<!-- HEROAREA -->
+  <%= yield %>
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="container">
+      <p>Footer</p>
+  </div>
+</footer>
 
-    <header>
-      <ul>
-        <% if admin_user? %>
-          <li>admin</li>
-        <% elsif current_user %>
-          <li>client</li>
-        <% end %>
-      </ul>
-
-      <ul>
-        <% if current_user %>
-        <h1><%= current_user.email %></h1>
-          <li>(<%= current_user.first_name %>)<a href="/auth/logout">Logout</a></li>
-        <% else %>
-          <li><a href="/auth/login">Login</a></li>
-          <li><a href="/users/new/register">Register</a></li>
-        <% end %>
-        <li><a href="/protected">Protected</a></li>
-      </ul>
-    </header>
-
-    <% if flash[:success] %>
-      <%= flash[:success] %>
-    <% end %>
-    <% if flash[:error] %>
-      <%= flash[:error] %>
-    <% end %>
-
-    <% if admin_user? %>
-      <div class="aside">
-        <ul>
-          <li><a href="/dashboard/cities">Cities</a></li>
-          <li><a href="/dashboard/venues">Venues</a></li>
-          <li><a href="/dashboard/arrangements">Seating Arrangements</a></li>
-          <li><a href="/dashboard/fooditems">Food Items</a></li>
-          <li><a href="/admin/site/gallery">Gallery</a></li>
-        </ul>
-      </div>
-    <% elsif current_user %>
-      <div class="aside">
-        <ul>
-          <li><a href="/dashboard/events/new">Book An Event</a></li>
-          <li><a href="/dashboard/venues">List Venues</a></li>
-          <li><a href="/dashboard/feedback">Feedback</a></li>
-        </ul>
-      </div>
-    <% end %>
-    <div class="content">
-
-    </div>
-    <footer>
-
-    </footer>
-
-
-
-
-
-    <%= yield %>
-
-
-  </body>
-</html>
+  <!-- JS -->
+  <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+  <script src="http://malsup.github.io/min/jquery.cycle2.min.js"></script>
+</body>

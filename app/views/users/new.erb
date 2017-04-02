@@ -1,4 +1,8 @@
-<h2>Register</h2>
+<section>
+  <div class="container hero">
+    <h1>Register</h1>
+  </div>
+</section>
 
 <% if @errors %>
   <ul>
@@ -8,28 +12,37 @@
   </ul>
 <%end %>
 
-<form class="" action="/users/new/register" method="post">
-  <div class="">
-    <label for="user[first_name]">First Name :</label><br />
-    <input type="text" name="user[first_name]" value="">
+
+<section>
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-lg-offset-3">
+          <form class="" action="/users/new/register" method="post">
+            <div class="form-group">
+              <label for="user[first_name]">First Name :</label><br />
+              <input type="text" name="user[first_name]" value="">
+            </div>
+            <div class="form-group">
+              <label for="user[last_name]">Last Name :</label> <br />
+              <input type="text" name="user[last_name]" value="">
+            </div>
+            <div class="form-group">
+              <label for="user[email]">email :</label><br />
+              <input type="text" name="user[email]" value="">
+            </div>
+            <div class="form-group">
+              <label for="user[password]">Password :</label><br />
+              <input type="password" name="user[password]" >
+            </div>
+            <div class="form-group">
+              <label for="user[password_confirmation]">Confirm password :</label><br />
+              <input type="password" name="user[password_confirmation]" >
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Register">
+            </div>
+          </form>
+        </div>
+      </div>
   </div>
-  <div class="">
-    <label for="user[last_name]">Last Name :</label> <br />
-    <input type="text" name="user[last_name]" value="">
-  </div>
-  <div class="">
-    <label for="user[email]">email :</label><br />
-    <input type="text" name="user[email]" value="">
-  </div>
-  <div class="">
-    <label for="user[password]">Password :</label><br />
-    <input type="password" name="user[password]" >
-  </div>
-  <div class="">
-    <label for="user[password_confirmation]">Confirm password :</label><br />
-    <input type="password" name="user[password_confirmation]" >
-  </div>
-  <div class="">
-    <input type="submit" value="Register">
-  </div>
-</form>
+</section>
