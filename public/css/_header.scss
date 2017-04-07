@@ -2,19 +2,38 @@
 **Header
 */
 .main-header {
-  background-color: rgba(255, 255, 255, 0.95);
+  //background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(52,60,73, 0.8);
   padding: 15px 0;
   position: fixed;
   width: 100%;
 
   z-index: 99999;
   .logo {
-    float: left;
-    font-size: 32px;
-    color: #000;
-    margin-left: 14px;
-    line-height: 32px;
-    display: inline-block;
+    &:hover {
+      text-decoration: none;
+    }
+    // float: left;
+    // font-size: 32px;
+    // color: $black-1;
+    // margin-left: 14px;
+    // line-height: 32px;
+    // display: inline-block;
+    img{
+      height: 32px;
+      float: left;
+      margin-left: 14px;
+      margin-right: 5px;
+    }
+    span {
+      font-size: 20px;
+      line-height: 32px;
+      display: block;
+      margin-left: 14px;
+      font: 400 21px/1.5 'Pacifico', Helvetica, sans-serif;
+      color: #DCDCDE;
+      text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+    }
   }
   form {
     float: left;
@@ -55,10 +74,11 @@
           a {
             line-height: 30px;
             padding: 10px 20px;
+            &:hover{
+              border: 1px solid #fff;
+            }
           }
-          &:hover{
-            border: 1px solid #000;
-          }
+
         }
         .btn-register{
           font-size: 11px;
@@ -74,6 +94,7 @@
             line-height: 30px;
             padding: 10px 20px;
           }
+          transition: background-color 2s;
           &:hover{
             background-color: darken( #71b552, 10%);
             color: #fff;
@@ -104,17 +125,17 @@
           display: inline;
 
         a {
-          color: rgb(153, 153, 153);
+          color: $color-hr;
           font-size: 12px;
           text-transform: uppercase;
-          font-family: Helvetica, sans-serif;
+
           line-height: 32px;
           font-weight: 700;
           letter-spacing: .04em;
           margin-right: 14px;
           &:hover{
             text-decoration: none;
-            color: #000;
+            color: #fff;
           }
         }
       }
@@ -123,4 +144,21 @@
 
 .mid-nav {
   right: 0;
+}
+
+#nav-avatar {
+  height: 32px;
+  border-radius: 50px;
+}
+
+#name {
+  color: rgb(153, 153, 153);
+  text-transform: capitalize;
+}
+
+.btn-nav {
+  i{
+    font-size: 14px;
+    padding-right: 5px;
+  }
 }

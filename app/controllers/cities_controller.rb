@@ -6,7 +6,7 @@ class CitiesController < ApplicationController
   end
 
   get '/new' do
-    erb :'cities/new'
+    erb :'cities/new', layout: :dashboard_layout
   end
 
   post '/create' do

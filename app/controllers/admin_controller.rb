@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
-
+  get '/' do
+    erb :'admin/index', layout: :dashboard_layout
+  end
   get '/site/gallery' do
     erb :'admin/gallery'
   end

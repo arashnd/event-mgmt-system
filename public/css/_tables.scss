@@ -1,0 +1,35 @@
+$color-3: #fff;
+$color-2: #c03b44; // red
+
+.table{
+
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0px;
+  thead{
+    background-color: #F9FAFC;
+    color: #ACB5BE;
+    tr:hover {
+          background-color: #F9FAFC;
+        }
+  }
+  th{
+      padding: 8px;
+    }
+  td{
+    border-top: 1px solid #E9E9E9;
+    padding: 6px;
+  }
+
+  tr:hover {
+        transition:   background-color 2s;
+        background-color: #F9FAFC;
+      }
+  .no-td{
+    text-align: center;
+    font-style: italic;
+    background-color: #F9FAFC;
+    color: $color-2;
+  }
+}

@@ -8,11 +8,15 @@
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <!-- FONT AWESOME -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/grid.css">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.min.css">
+
 
 
   </head>
@@ -24,26 +28,40 @@
       <div class="container-">
         <div class="row">
           <div class="col-lg-4">
-            <a href="/" class="logo"><i class="fa fa-calendar" aria-hidden="true"></i></a>
-            <form action="">
-              <input type="text" id="nav-input" placeholder="Enter your locatity">
-            </form>
+            <a href="/" class="logo"><img src="/images/fireworks.svg" alt=""><span>festiva</span></a>
+            <!-- <% if !current_user %>
+              <form action="">
+                <input type="text" id="nav-input" placeholder="Enter your locatity">
+              </form>
+            <% end %> -->
           </div><!-- end col-lg-4 -->
-          <div class="col-lg-4  col-lg-offset-1">
+          <div class="col-lg-4 ">
             <div class="nav mid-nav">
               <ul>
-                <li><a href="/">Home</a></li>
+                <% if current_user %>
+                  <li><a href="/">My Events</a></li>
+                <% else %>
+                  <li><a href="/">Home</a></li>
+                <% end %>
                 <li><a href="">New</a></li>
                 <li><a href="">Browse Venues In</a></li>
                 <li><a href="">...</a></li>
               </ul>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <nav class="nav main-nav">
               <ul>
-                <li><a href="/auth/login" class="btn-nav btn-login">Login</a></li>
-                <li><a href="/users/new/register" class="btn-nav btn-register">Register</a></li>
+                <% if current_user %>
+                  <li><a href="/auth/login" class="btn-nav btn-register"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Book an Event</a></li>
+                  <li><a href="/auth/logout" class=" btn-login"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                  <li><a href="#"><img src="/images/avatar.jpg" alt="" id="nav-avatar"></a></li>
+
+                <% else %>
+                  <li><a href="/auth/login" class="btn-nav btn-login">Login</a></li>
+                  <li><a href="/users/new/register" class="btn-nav btn-register">Register</a></li>
+                <% end %>
+
               </ul>
             </nav>
           </div><!-- end col-lg-8 -->
@@ -54,7 +72,23 @@
 <!-- SLIDER -->
 
 <!-- HEROAREA -->
+
+<% if admin_user? %>
+<section>
+  <div class="container hero">
+    <div class="col-lg-3">
+
+    <div class="col-lg-9">
+      <%= yield %>
+    </div>
+  </div>
+</section>
+<% elsif current_user %>
+<% else %>
   <%= yield %>
+<% end %>
+
+
 <!-- FOOTER -->
 <footer class="main-footer">
   <div class="container">

@@ -5,12 +5,12 @@ class VenuesController < ApplicationController
 
   get '/' do
     @venues = Venue.all
-    erb :'venues/index'
+    erb :'venues/index', layout: :dashboard_layout
   end
 
   get '/new' do
     @cities = City.all
-    erb :'venues/new'
+    erb :'venues/new', layout: :dashboard_layout
   end
 
   post '/create' do

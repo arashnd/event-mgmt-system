@@ -1,25 +1,39 @@
-<form class="form" action="/dashboard/venues/create" method="post">
-  <div class="">
-    <label for="venue[name]">Name</label><br />
-    <input type="text" name="venue[name]" value="">
+<div class="content">
+
+
+  <div class="sub-nav">
+    <h3 class="title">Add an venue</h3>
+    <a href="/dashboard/cities/new" class="btn-green btn-green-o "><i class="fa fa-plus" aria-hidden="true"></i>Add A City</a>
   </div>
-  <div class="">
-    <label for="venue[city_id]">City</label><br />
-    <select class="" name="venue[city_id]">
-      <% @cities.each do |city| %>
-        <option value="<%= city.id %>"><%= city.name %></option>
-      <% end %>
-    </select>
-  </div>
-  <div class="">
-    <label for="venue[location]">Location</label><br />
-    <input type="text" name="venue[location]" value="">
-  </div>
-  <div class="">
-    <label for="venue[desciption]">Desciption</label><br />
-    <textarea name="venue[desciption]" rows="8" cols="50"></textarea>
-  </div>
-  <div class="">
-    <input type="submit" value="Create">
-  </div>
-</form>
+  <form class="form" action="/dashboard/venues/create" method="post">
+    <table>
+      <tr>
+        <td><label for="venue[name]">Name</label></td>
+        <td><input type="text" name="venue[name]" value=""></td>
+      </tr>
+      <tr>
+        <td><label for="venue[city_id]">City</label></td>
+        <td>
+          <select class="" name="venue[city_id]">
+            <% @cities.each do |city| %>
+              <option value="<%= city.id %>"><%= city.name %></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="venue[location]">Location</label></td>
+        <td><input type="text" name="venue[location]" value=""></td>
+      </tr>
+      <tr>
+        <td valign="top"><label for="venue[desciption]">Desciption</label></td>
+        <td><textarea name="venue[desciption]" rows="8" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td >&nbsp;</td>
+        <td class="align-right"><input type="submit" value="Create" class="btn-green"></td>
+      </tr>
+          </table>
+  </form>
+
+</div>

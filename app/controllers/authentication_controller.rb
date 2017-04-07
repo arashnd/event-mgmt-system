@@ -37,7 +37,7 @@ class AuthenticationController < ApplicationController
     env['warden'].authenticate! :admin, scope: :sudo
     flash[:success] = "Welcome back admin"
 
-    redirect '/'
+    redirect '/admin/'
   end
 
 

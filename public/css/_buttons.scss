@@ -1,25 +1,42 @@
-/*
-** Buttons
-*/
+// /*
+// ** Buttons
+// */
+//
+//
+//
+// .btn {
+//   border: 1px solid $color-button-1;
+//   display: inline-block;
+//   height: $baseline * 2;
+//   min-width: 10em;
+//   padding: 1.1em 1em;
+//
+//   color: $color-button-1;
+//   text-align: center;
+//   font-weight: bold;
+//   font-style: normal;
+//   text-transform: uppercase;
+//   letter-spacing: 1px;
+//
+//   &:hover {
+//     background-color: $color-button-1;
+//     color: #fff;
+//     text-decoration: none;
+//   }
+// }
+//
+// .btn-black {
+//   color: #fff;
+// }
 
-.btn {
-  border: 1px solid $color-button-1;
-  display: inline-block;
-  height: $baseline * 2;
-  min-width: 10em;
-  padding: 1.1em 1em;
-
-  color: $color-button-1;
-  text-align: center;
-  font-weight: bold;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  &:hover {
-    background-color: $color-button-1;
-    color: #fff;
+.btn-green-o{
+  background-color: #fff;
+  color: #19BA38;
+  text-transform: capitalize;
+  transition: background-color 0s;
+  &:hover{
+    background-color: darken(#19BA38, 6%);
     text-decoration: none;
+    color: #fff;
   }
-
 }

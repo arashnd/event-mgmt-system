@@ -1,8 +1,6 @@
 require "cloudinary"
 
-helpers do
-  
-end
+
 class UsersController < ApplicationController
 
   get '/new/register' do
@@ -20,6 +18,7 @@ class UsersController < ApplicationController
       erb :'users/new'
     end
   end
+
 
   get '/upload' do
 

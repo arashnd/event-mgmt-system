@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="utf-8">
+      <meta name="description" content="CS-619 FYP Online Event Management System">
+      <meta name="author" content="F16026C510">
+      <title>Festiva</title>
+      <!-- GOOGLE FONTS -->
+      <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+      <!-- FONT AWESOME -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="/css/grid.css">
+      <link rel="stylesheet" href="/css/dashboard.min.css">
+
+
+    </head>
+  </head>
+  <body>
+
+    <div class="main-container">
+      <div class="side-nav col-lg-2">
+        <header id="nav-header">
+          <div class="logo">
+            <h2>festiva</h2>
+          </div>
+        </header>
+        <div class="user-info">
+          <img src="/images/avatar.jpg" alt="" id="avatar">
+          <ul>
+            <li>Arash</li>
+            <li>Naveed</li>
+          </ul>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="#"><i class="fa fa-group"></i>Users</a></li>
+            <li><a href="#"><i class="fa fa-calendar"></i>Events</a></li>
+            <li><a href="/dashboard/venues/"><i class="fa fa-map"></i>Venues</a></li>
+            <li><a href="#"><i class="fa fa-cutlery"></i> Food Items</a></li>
+
+          </ul>
+          <ul id="setting">
+            <li><i class="fa fa-cogs"></i>App Settings</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="main col-lg-10">
+        <header id="main-header">
+          <h2>Event Management System</h2>
+          <div class="main-header-nav">
+            <ul>
+              <li><a href="/auth/logout" class="btn-logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+            </ul>
+          </div>
+        </header>
+
+        <div class="main-content">
+          <% if flash[:success] %>
+            <p class="flash-sucess flash-db"><%= flash[:success] %></p>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+  </div>
+
+
+
+  </body>
+</html>
