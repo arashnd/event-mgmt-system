@@ -1,24 +1,154 @@
-<h2>Book an Event</h2>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<p><%= @venue.name  %> <%= @venue.city.name %></p>
+<script type="text/javascript">
+$(function(){
 
-<form class="" action="/dashboard/events/<%= @venue.id %>/book" method="post">
+  $('#city').change(function(){
 
-  <div class="">
-    <label for="event[event_type]">Birthday Party</label>
-    <input type="radio" name="event[event_type]" value="birthday">
-    <label for="event[event_type]">Wedding Party</label>
-    <input type="radio" name="event[event_type]" value="wedding">
+    cityId = $(this).val();
+
+    if(cityId){
+
+      $.ajax({
+        method: 'POST',
+        url: '/dashboard/events/book',
+        dataType: 'json',
+        data: { 'city_id': cityId },
+        success: function(data){
+          var items = [];
+
+          if(data.length > 0){
+
+            items.push('<option value="0">-Select Venue-</option>');
+
+            $('#venue').prop('disabled', false);
+            $.each(data, function(i, venue){
+
+              items.push('<option value="' + venue.id + '">' + venue.name + '</option>');
+
+            });
+          }else{
+            items.push('<option> No venues </option>');
+            $('#venue').prop('disabled', true);
+          }
+          console.log(data.length);
+          $('#venue').html(items.join(''));
+
+        },
+
+        statusCode: {
+          404: function() {
+            alert("There was a problem");
+          }
+        }
+      });
+    }else{
+      $('#venue').html('<option>Select City First</option>');
+    }
+
+  });
+
+
+  $('#datepicker').prop('disabled', true);
+  $('#timeslot').prop('disabled', true);
+
+  $('#venue').change(function(){
+
+    venueId = $(this).val();
+
+    if(venueId > 0){
+      $('#datepicker').prop('disabled', false);
+    }else {
+      $('#datepicker').prop('disabled', true);
+    }
+  });
+
+  $('#datepicker').change(function(){
+
+    var date = $(this).val();
+
+    var regex = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g;
+
+    if(date.match(regex)){
+      $('#timeslot').prop('disabled', false);
+    }else {
+      $('#timeslot').prop('disabled', true);
+    }
+  });
+
+
+
+});
+
+</script>
+
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
+} );
+</script>
+
+<div class="content">
+  <div class="sub-nav">
+    <h3 class="title">Book An Event</h3>
   </div>
-  <div class="">
-    <select class="" name="event[slot]">
-      <% %w(morning evening full_day).each do |slot| %>
-        <option value="<%= slot %>"><%= slot.capitalize.tr('_', ' ') %></option>
-      <% end %>
-    </select>
-  </div>
-  <div class="">
-    <input type="submit" name="" value="Book">
-  </div>
+  <form class="form" action="/dashboard/events/book" method="post">
+    <div class="form-group">
+      <label for="">City</label>
+      <select class="" name="venue[city_id]" id="city">
+        <option value="">-- Select City --</option>
+        <% @cities.each do |city| %>
+          <option value="<%= city.id %>"><%= city.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="event[venue]">Venue</label>
+      <select class="" name="venue[venue_id]" id='venue'>
 
-</form>
+        <option value="">-- Select City First --</option>
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="event[date]">Date</label>
+      <input type="text" name="event[date]" value="" class="date-input" id="datepicker">
+    </div>
+    <div class="form-group">
+      <label for="event[venue]">Time Slot</label>
+      <select class="" name="event[slot]" id="timeslot">
+        <% %w(morning evening full_day).each do |slot| %>
+          <option value="<%= slot %>"><%= slot.capitalize.tr('_', ' ') %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="event[type]">Event Type</label>
+      <input type="radio" name="event[event_type]" value="birthday">
+      <label for="event[event_type]">Birthday Party</label>
+      <input type="radio" name="event[event_type]" value="wedding">
+      <label for="event[event_type]">Wedding Party</label>
+    </div>
+    <div class="form-group">
+      <label for="event[seating_arrangement]">Seating Arrangement</label>
+      <div class="seating">
+        <input type="radio" name="event[seating_arrangement]" value="wedding">
+        <img src="/images/class-layout.png" alt="" class="seating-img"> Class
+      </div>
+      <div class="seating">
+        <input type="radio" name="event[seating_arrangement]" value="wedding">
+        <img src="/images/u-layout.png" alt="" class="seating-img"> U-Shaped
+      </div>
+      <div class="seating">
+        <input type="radio" name="event[seating_arrangement]" value="wedding">
+        <img src="/images/round-layout.png" alt="" class="seating-img"> Cluster
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">&nbsp;</label>
+      <input type="submit" value="Book event" class="btn-green">
+    </div>
+  </form>
+</div>

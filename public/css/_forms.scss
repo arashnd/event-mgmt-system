@@ -2,11 +2,15 @@
 form {
   label {
     margin-right: 64px;
+    display: inline-block;
+    width: 150px;
   }
   tr{
     height: 64px;
   }
   margin: 21px;
+  padding-top: 21px;
+  padding-bottom: 21px;
   input[type="text"],
   input[type="email"],
   input[type="password"],
@@ -20,6 +24,9 @@ form {
     &:focus{
       border-color: darken(#999999, 20%);
     }
+  input .date-input{
+    width: 150px;
+  }
   }
 
   textarea{
@@ -30,6 +37,15 @@ input[type="submit"] {
   margin-right: 0px;
 }
 
+
 .align-right{
   text-align: right;
+}
+
+.form-group{
+  margin-bottom: 21px;
+}
+
+#datepicker{
+  width: 120px;
 }

@@ -1,6 +1,5 @@
 @import 'variables';
-@import 'tables';
-
+$color-2: #c03b44;
 
 $color-header: #343C49;
 $db-border: #209FE2;
@@ -275,6 +274,7 @@ box-flex:  0;
   }
 }
 
+
 .btn-green {
   border: 1px solid #19BA38;
   background-color: #19BA38;
@@ -308,6 +308,10 @@ box-flex:  0;
   color: $color-2;
 }
 
+.in-btn{
+  font-size: 14px;
+}
+
 
 // Dashboard forms
 @import "forms";
@@ -315,3 +319,13 @@ box-flex:  0;
 // Buttons
 
 @import "buttons";
+
+
+.seating{
+  display: inline;
+  margin-right: 21px;
+}
+.seating-img{
+  width: 48px;
+  opacity: 0.7;
+}

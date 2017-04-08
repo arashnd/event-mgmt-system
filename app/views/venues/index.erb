@@ -1,33 +1,40 @@
 <div class="content">
   <div class="sub-nav">
     <h3 class="title">Venues</h3>
-    <a href="/dashboard/venues/new" class="btn-green"><i class="fa fa-plus" aria-hidden="true"></i>Add New Venue</a>
-  </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>City</th>
-          <th>Location</th>
-          <th>Events</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <% @venues.each do |venue| %>
-        <tr>
-          <!-- <td><%= venue.name %></td>
-          <td><%= venue.name %></td>
-          <td><%= venue.name %></td>
-          <td><%= venue.name %></td> -->
-          <td>Dummy</td>
-          <td>Dummy</td>
-          <td>Dummy</td>
-          <td>Dummy</td>
-          <td>
-            <a href="#" class="update-link">Update</a>
-            <a href="#" class="del-link">Delete</a>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+    <% if admin_user? %>
+      <a href="/dashboard/venues/new" class="btn-green"><i class="fa fa-plus" aria-hidden="true"></i>Add New Venue</a>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Location</th>
+            <th>Events</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <% @venues.each do |venue| %>
+          <tr>
+            <!-- <td><%= venue.name %></td>
+            <td><%= venue.name %></td>
+            <td><%= venue.name %></td>
+            <td><%= venue.name %></td> -->
+            <td>Dummy</td>
+            <td>Dummy</td>
+            <td>Dummy</td>
+            <td>Dummy</td>
+            <td>
+              <a href="#" class="update-link">Update</a>
+              <a href="#" class="del-link">Delete</a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
+    <% else %>
+      <div class="">
+        bu
+      </div>
+    <% end %>
 </div>

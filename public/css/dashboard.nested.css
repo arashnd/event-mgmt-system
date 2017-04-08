@@ -1,30 +1,6 @@
 /*
 **Variables
 */
-.table {
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
-  margin: 0px; }
-  .table thead {
-    background-color: #F9FAFC;
-    color: #ACB5BE; }
-    .table thead tr:hover {
-      background-color: #F9FAFC; }
-  .table th {
-    padding: 8px; }
-  .table td {
-    border-top: 1px solid #E9E9E9;
-    padding: 6px; }
-  .table tr:hover {
-    transition: background-color 2s;
-    background-color: #F9FAFC; }
-  .table .no-td {
-    text-align: center;
-    font-style: italic;
-    background-color: #F9FAFC;
-    color: #c03b44; }
-
 h1, h2, h3 {
   margin: 0;
   padding: 0; }
@@ -261,10 +237,17 @@ body {
 .del-link {
   color: #c03b44; }
 
+.in-btn {
+  font-size: 14px; }
+
 form {
-  margin: 21px; }
+  margin: 21px;
+  padding-top: 21px;
+  padding-bottom: 21px; }
   form label {
-    margin-right: 64px; }
+    margin-right: 64px;
+    display: inline-block;
+    width: 150px; }
   form tr {
     height: 64px; }
   form input[type="text"],
@@ -282,6 +265,11 @@ form {
     form input[type="password"]:focus,
     form textarea:focus {
       border-color: #666666; }
+    form input[type="text"] input .date-input,
+    form input[type="email"] input .date-input,
+    form input[type="password"] input .date-input,
+    form textarea input .date-input {
+      width: 150px; }
   form textarea {
     height: 100px; }
 
@@ -290,6 +278,12 @@ input[type="submit"] {
 
 .align-right {
   text-align: right; }
+
+.form-group {
+  margin-bottom: 21px; }
+
+#datepicker {
+  width: 120px; }
 
 .btn-green-o {
   background-color: #fff;
@@ -300,3 +294,11 @@ input[type="submit"] {
     background-color: #159f30;
     text-decoration: none;
     color: #fff; }
+
+.seating {
+  display: inline;
+  margin-right: 21px; }
+
+.seating-img {
+  width: 48px;
+  opacity: 0.7; }

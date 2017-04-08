@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   before do
-    env['warden'].authenticate! :admin, scope: :sudo
+    #env['warden'].authenticate! :admin, scope: :sudo
   end
 
   get '/' do

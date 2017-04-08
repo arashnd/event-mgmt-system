@@ -23,7 +23,7 @@ class AuthenticationController < ApplicationController
     flash[:success] = "Successfully logged in"
 
     if session[:return_to].nil?
-      redirect '/'
+      redirect '/dashboard/events'
     else
       redirect session[:return_to]
     end

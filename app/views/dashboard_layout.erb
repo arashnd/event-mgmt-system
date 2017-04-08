@@ -31,20 +31,31 @@
         <div class="user-info">
           <img src="/images/avatar.jpg" alt="" id="avatar">
           <ul>
-            <li>Arash</li>
-            <li>Naveed</li>
+            <li><%= current_user.first_name %></li>
+            <li><%= current_user.last_name %></li>
           </ul>
         </div>
         <div class="nav">
           <ul>
-            <li><a href="#"><i class="fa fa-group"></i>Users</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Events</a></li>
-            <li><a href="/dashboard/venues/"><i class="fa fa-map"></i>Venues</a></li>
-            <li><a href="#"><i class="fa fa-cutlery"></i> Food Items</a></li>
+            <% if admin_user? %>
+              <li><a href="#"><i class="fa fa-group"></i>Users</a></li>
+              <li><a href="#"><i class="fa fa-calendar"></i>Events</a></li>
+              <li><a href="/dashboard/venues/"><i class="fa fa-map"></i>Venues</a></li>
+              <li><a href="#"><i class="fa fa-cutlery"></i> Food Items</a></li>
+            <% else %>
+              <li><a href="/dashboard/events"><i class="fa fa-calendar"></i>My events</a></li>
+              <li><a href="/dashboard/venues"><i class="fa fa fa-map"></i>List Venues</a></li>
+              <li><a href="#"><i class="fa fa-refresh"></i>Feedback</a></li>
+            <% end %>
 
           </ul>
           <ul id="setting">
-            <li><i class="fa fa-cogs"></i>App Settings</li>
+            <% if admin_user? %>
+              <li><i class="fa fa-cogs"></i>App Settings</li>
+            <% else %>
+              <li><i class="fa fa-cogs"></i>Account Settings</li>
+            <% end %>
+
           </ul>
         </div>
       </div>
@@ -54,7 +65,10 @@
           <h2>Event Management System</h2>
           <div class="main-header-nav">
             <ul>
-              <li><a href="/auth/logout" class="btn-logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+              <% unless admin_user? %>
+                <li><a href="/dashboard/events/book" class="btn-green"><i class="fa fa-calendar-plus-o in-btn" aria-hidden="true"></i>Book and event</a></li>
+              <% end %>
+              <li><a href="/auth/logout" class="btn-logout"><i class="fa fa-sign-out in-btn" aria-hidden="true"></i> Logout</a></li>
             </ul>
           </div>
         </header>
@@ -62,6 +76,8 @@
         <div class="main-content">
           <% if flash[:success] %>
             <p class="flash-sucess flash-db"><%= flash[:success] %></p>
+          <% elsif flash[:error] %>
+            <p class="flash-error flash-db"><%= flash[:error] %></p>
           <% end %>
           <%= yield %>
         </div>

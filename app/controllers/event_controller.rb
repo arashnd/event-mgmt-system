@@ -1,28 +1,30 @@
+require 'json'
+
 class EventsController < ApplicationController
 
   get '/' do
     @events = current_user.events
-    erb :'events/index'
+    erb :'events/index', layout: :dashboard_layout
   end
 
-  get '/:venue_id/book' do
-    @venue = Venue.get(params[:venue_id])
-    erb :'events/new'
+  get '/?:venue_id?/book' do
+    @cities = City.all
+    erb :'events/new' , layout: :dashboard_layout
   end
 
-  post '/:venue_id/book' do
-    event = Event.new(params[:event])
-    event.user = current_user
-    event.venue_id = params[:venue_id]
-    if event.save
-      flash[:success] = "Event Booked successfully"
-      redirect '/dashboard/events/'
+  post '/?:venue_id?/book' do
+
+    if request.xhr?
+      puts "Request received"
+      content_type :json
+
+      city = City.get(params[:city_id])
+      city.venues.to_json
     else
-      puts "failed to save.."
-      puts event.errors.inspect
-      flash[:error] = "Error #{params[:event].inspect}"
-      redirect '/dashboard/events/'
+      # handle normal post request
     end
+
+
   end
 
 end
