@@ -1,0 +1,25 @@
+<div class="content">
+  <div class="sub-nav">
+      <h3 class="title">Menu / Food Presentation</h3>
+  </div>
+  <form class="" action="/dashboard/events/menu/<%= @event.id %>/create" method="post">
+    <div class="form-group">
+      <label for="">Food presentation :</label>
+      <input type="radio" name="menu[presentation]" value="decorated"> Decorated
+      <input type="radio" name="menu[presentation]" value="simple"> Simple
+    </div>
+    <div class="form-group">
+      <label for="">Crockery :</label>
+      <select class="" name="menu[crockery]">
+        <% %w(disposable bone_china glass steel).each do |crockery| %>
+          <option value="<%= crockery %>"><%= crockery.capitalize.tr('_', ' ') %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="">
+      <label for="">&nbsp;</label>
+      <input type="submit" name="" value="Save" class="btn-green">
+    </div>
+    <h3>Food Items</h3>
+  </form>
+</div>

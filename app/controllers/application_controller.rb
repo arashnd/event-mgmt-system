@@ -11,9 +11,9 @@ class ApplicationController < Sinatra::Base
 
     def auth
       {
-        cloud_name: 'fypeventapp',
-        api_key: '942528919821819',
-        api_secret: 'xYZNKn9PgSlDBW9cPPbgSw-WJ6M'
+        cloud_name: #cloudname,
+        api_key: #add_key_here,
+        api_secret: #api_secret_here
       }
     end
 

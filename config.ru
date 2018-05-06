@@ -4,9 +4,9 @@ Bundler.require
 # Cloudinary
 
 Cloudinary.config do |config|
-    config.cloud_name = 'fypeventapp',
-    config.api_key = '942528919821819',
-    config.api_secret = 'xYZNKn9PgSlDBW9cPPbgSw-WJ6M'
+    config.cloud_name = #cloud_name,
+    config.api_key = #api_key,
+    config.api_secret = #api_secret_here
 end
 
 # Setup Database
@@ -95,6 +95,12 @@ map('/auth') {run AuthenticationController}
 map('/users') {run UsersController}
 map('/admin') {run AdminController}
 map('/dashboard/venues') {run VenuesController}
+map('/dashboard/catagories') { run CatagoriesController }
 map('/dashboard/fooditems') {run FooditemsController}
 map('/dashboard/cities') { run CitiesController }
 map('/dashboard/events') { run EventsController }
+map('/dashboard/events/menu') { run MenusController } # to be refactored using regex
+map('/gallery') { run GalleryImagesController }
+
+
+# /\/dashboard\/events\/menu\/\d+\//

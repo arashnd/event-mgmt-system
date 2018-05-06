@@ -1,0 +1,25 @@
+<div class="content">
+  <div class="sub-nav">
+    <h3 class="title">Photo Gallery</h3>
+    <a href="/gallery/image/new" class="btn-green">Add new photo</a>
+  </div>
+  <div class="row border row-bg">
+    <div class="col-lg-7">
+      <h4>Photo</h4>
+    </div>
+    <div class="col-lg-5">
+      <h4>Details</h4>
+    </div>
+  </div>
+  <% @gallery_images.each do |image| %>
+    <div class="row border row-bg">
+      <div class="col-lg-7">
+        <img class =".row-venue-thumb" src="https://res.cloudinary.com/fypeventapp/image/upload/<%= "#{image.image_public_id}.#{image.image_format}" %>" alt="">
+      </div>
+      <div class="col-lg-5">
+        <h4>Details</h4>
+      </div>
+    </div>
+  <% end %>
+
+</div>

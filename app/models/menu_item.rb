@@ -7,5 +7,5 @@ class MenuItem
   property :fooditem_id, Integer
 
   belongs_to :menu
-  has 1, :fooditem
+  belongs_to :fooditem
 end

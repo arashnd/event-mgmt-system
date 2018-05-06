@@ -7,18 +7,19 @@ class FooditemsController < ApplicationController
 
   get '/' do
     @fooditems = Fooditem.all
-    erb :'fooditems/index'
+    erb :'fooditems/index', layout: :dashboard_layout
   end
 
   get '/new' do
-    erb :'fooditems/new'
+    @catagories = Catagory.all
+    erb :'fooditems/new', layout: :dashboard_layout
   end
 
   post '/create' do
     fooditem = Fooditem.new(params[:fooditem])
     if fooditem.save
       flash[:success] = "Created successfully.."
-      redirect '/dashboard/fooditems/index'
+      redirect '/dashboard/fooditems'
     else
     end
   end

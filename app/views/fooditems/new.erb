@@ -1,23 +1,40 @@
-<form class="" action="/dashboard/fooditems/create" method="post">
-
-  <div class="">
-    <label for="fooditem[name]">Name :</label><br />
-    <input type="text" name="fooditem[name]" value="">
-  </div>
-  <div class="">
-    <label for="fooditem[cuisine]">Cuisine :</label><br />
-    <input type="text" name="fooditem[cuisine]" value="">
-  </div>
-  <div class="">
-    <label for="fooditem[unit_of_issue]">Unit of issue :</label><br />
-    <input type="text" name="fooditem[unit_of_issue]" value="">
-  </div>
-  <div class="">
-    <label for="fooditem[desciption]">Desciption :</label><br />
-    <input type="text" name="fooditem[desciption]" value="">
-  </div>
-  <div class="">
-    <input type="submit" value="Create">
+<div class="content">
+  <div class="sub-nav">
+    <h3 class="title">Add a Food Item</h3>
+    <p><a href="/dashboard/catagories/new" class="btn-green">Add a catagory</a></p>
   </div>
 
-</form>
+  <form class="form" action="/dashboard/fooditems/create" method="post">
+
+    <div class="form-group">
+      <label for="fooditem[name]">Name :</label>
+      <input type="text" name="fooditem[name]" value="">
+    </div>
+    <div class="form-group">
+      <label for="fooditem[catagory_id]">Catagory :</label>
+      <select class="" name="fooditem[catagory_id]">
+        <% @catagories.each do |catagory| %>
+          <option value="<%= catagory.id %>"><%= catagory.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="fooditem[cuisine]">Cuisine :</label>
+      <input type="text" name="fooditem[cuisine]" value="">
+    </div>
+    <div class="form-group">
+      <label for="fooditem[unit_of_issue]">Unit of issue :</label>
+      <input type="text" name="fooditem[unit_of_issue]" value="">
+    </div>
+    <div class="form-group">
+      <label for="fooditem[desciption]">Desciption :</label>
+      <input type="text" name="fooditem[desciption]" value="">
+    </div>
+    <div class="form-group">
+      <label for="">&nbsp;</label>
+      <input type="submit" value="Add" class="btn-green">
+    </div>
+
+  </form>
+
+</div>

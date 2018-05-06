@@ -1,7 +1,8 @@
+<% if admin_user? %>
 <div class="content">
   <div class="sub-nav">
     <h3 class="title">Venues</h3>
-    <% if admin_user? %>
+
       <a href="/dashboard/venues/new" class="btn-green"><i class="fa fa-plus" aria-hidden="true"></i>Add New Venue</a>
     </div>
       <table class="table">
@@ -11,19 +12,17 @@
             <th>City</th>
             <th>Location</th>
             <th>Events</th>
+            <th>Capacity</th>
             <th>Action</th>
           </tr>
         </thead>
         <% @venues.each do |venue| %>
           <tr>
-            <!-- <td><%= venue.name %></td>
             <td><%= venue.name %></td>
-            <td><%= venue.name %></td>
-            <td><%= venue.name %></td> -->
-            <td>Dummy</td>
-            <td>Dummy</td>
-            <td>Dummy</td>
-            <td>Dummy</td>
+            <td><%= venue.city.name %></td>
+            <td><%= venue.location %></td>
+            <td><%= venue.events.count %></td>
+            <td><%= venue.capacity %></td>
             <td>
               <a href="#" class="update-link">Update</a>
               <a href="#" class="del-link">Delete</a>
@@ -31,10 +30,45 @@
           </tr>
         <% end %>
       </table>
-
-    <% else %>
-      <div class="">
-        bu
-      </div>
-    <% end %>
 </div>
+
+<% else %>
+<div class="content">
+  <div class="sub-nav">
+    <h3 class="title">All Venues</h3>
+  </div>
+
+  <div class="row border row-bg">
+    <div class="col-lg-3">
+      <h4>Venue Photo</h4>
+    </div>
+    <div class="col-lg-5">
+      <h4>Details</h4>
+    </div>
+    <div class="col-lg-4">
+      <h4>Book</h4>
+    </div>
+  </div>
+
+  <% @venues.each do |venue| %>
+    <div class="row border">
+      <div class="col-lg-3">
+        <img class =".row-venue-thumb" src="https://res.cloudinary.com/fypeventapp/image/upload/c_scale,h_120,w_250/<%= "#{venue.venue_photo_public_id}.#{venue.venue_photo_format}" %>" alt="">
+      </div>
+      <div class="col-lg-5 venue-details">
+        <p><span>Name :</span> <%= venue.name %></p>
+        <p><span>City :</span> <%= venue.city.name %></p>
+        <p><span>Location:</span> <%= venue.location %></p>
+        <p><span>Capacity:</span> <%= venue.capacity %></p>
+      </div>
+      <div class="col-lg-4">
+
+          <p><a href="#" class="btn-green">Book This Venue</a></p>
+
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<% end %>

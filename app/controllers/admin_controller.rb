@@ -3,7 +3,7 @@ class AdminController < ApplicationController
     erb :'admin/index', layout: :dashboard_layout
   end
   get '/site/gallery' do
-    erb :'admin/gallery'
+    erb :'admin/gallery', layout: :dashboard_layout
   end
 
   post '/site/gallery' do

@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="sub-nav">
+    <h3 class="title">Users</h3>
+
+  </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="pad-21">First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Events</th>
+          <th>Details</th>
+
+        </tr>
+      </thead>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="pad-21"><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.events.count %></td>
+          <td>Details</td>
+        </tr>
+
+      <% end %>
+    </table>
+</div>

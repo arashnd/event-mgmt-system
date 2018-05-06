@@ -14,7 +14,14 @@ class VenuesController < ApplicationController
   end
 
   post '/create' do
-    venue = Venue.new(params[:venue])
+
+    image = Cloudinary::Uploader.upload(params[:file][:tempfile], auth)
+
+    venue = params[:venue]
+    venue[:venue_photo_public_id] = image['public_id']
+    venue[:venue_photo_format] = image['format']
+
+    venue = Venue.new(venue)
     if venue.save
       flash[:success] = "Venue created successfully ..."
       redirect '/dashboard/venues/'

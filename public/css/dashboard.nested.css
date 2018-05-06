@@ -7,12 +7,11 @@ h1, h2, h3 {
 
 html,
 body {
-  height: 100%;
+  background-color: #eaeaea;
   padding: 0;
   margin: 0; }
 
 .main-container {
-  height: 100%;
   display: -ms-flexbox;
   display: -webkit-box;
   display: -moz-box;
@@ -72,7 +71,7 @@ body {
   position: fixed;
   z-index: 9999;
   background-color: #fff;
-  border-bottom: 1px solid 1px solid #d2d2d2;
+  border-bottom: 1px solid #eaeaea;
   height: 64px; }
   #main-header h2 {
     padding-left: 28px;
@@ -179,18 +178,12 @@ body {
     text-decoration: none;
     color: #fff; }
 
-.flash-sucess {
-  font-weight: bold;
-  color: #19BA38;
-  padding-left: 7px;
-  margin-top: 0;
-  padding-top: 7px; }
-
 .content {
   padding-top: 14px;
   width: 100%;
   margin-left: 0px;
-  margin-right: 0px; }
+  margin-right: 0px;
+  background-color: #fff; }
 
 .title {
   padding-left: 21px;
@@ -202,7 +195,7 @@ body {
   font-size: 25px; }
 
 .sub-nav {
-  height: 52px; }
+  height: 65px; }
   .sub-nav .title {
     float: left; }
   .sub-nav a {
@@ -285,6 +278,14 @@ input[type="submit"] {
 #datepicker {
   width: 120px; }
 
+.add-items label {
+  display: inline;
+  margin: 0;
+  padding-right: 20px; }
+
+.add-items input[type="text"] {
+  width: 100px; }
+
 .btn-green-o {
   background-color: #fff;
   color: #19BA38;
@@ -295,6 +296,34 @@ input[type="submit"] {
     text-decoration: none;
     color: #fff; }
 
+.table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0px; }
+  .table thead {
+    background-color: #F9FAFC;
+    color: #ACB5BE; }
+    .table thead tr:hover {
+      background-color: #F9FAFC; }
+  .table th {
+    padding: 8px;
+    padding-left: 21px;
+    height: 3.429em; }
+  .table td {
+    border-top: 1px solid #E9E9E9;
+    padding: 6px;
+    padding-left: 21px;
+    height: 3.429em; }
+  .table tr:hover {
+    transition: background-color 2s;
+    background-color: #F9FAFC; }
+  .table .no-td {
+    text-align: center;
+    font-style: italic;
+    background-color: #F9FAFC;
+    color: #c03b44; }
+
 .seating {
   display: inline;
   margin-right: 21px; }
@@ -302,3 +331,52 @@ input[type="submit"] {
 .seating-img {
   width: 48px;
   opacity: 0.7; }
+
+.dashboard-errors {
+  background-color: #F36151;
+  font-weight: bold;
+  color: #fff;
+  padding: 7px 21px; }
+
+.flash-sucess {
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(25, 186, 56, 0.73);
+  padding: 7px 21px;
+  margin-top: 0;
+  padding-top: 7px; }
+
+.border {
+  border-top: 1px solid rgba(234, 234, 234, 0.78);
+  padding-left: 21px;
+  padding-top: 21px; }
+
+.row-venue-thumb {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 1px rgba(234, 234, 234, 0.78);
+  width: 250px;
+  height: 120px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  float: left; }
+
+.venue-name {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  margin-top: 35px; }
+
+.row-bg {
+  background-color: #F9FAFC;
+  margin: 0; }
+  .row-bg h4 {
+    margin: 0;
+    padding: 7px;
+    color: #ACB5BE; }
+
+.venue-details span {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px; }

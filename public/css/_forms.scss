@@ -49,3 +49,14 @@ input[type="submit"] {
 #datepicker{
   width: 120px;
 }
+
+.add-items{
+  label{
+    display: inline;
+    margin: 0;
+    padding-right: 20px;
+  }
+  input[type="text"]{
+    width: 100px;
+  }
+}

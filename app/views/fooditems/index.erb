@@ -1,14 +1,30 @@
-<h2>Food Items</h2>
-
-<a href="/dashboard/fooditems/new">Add fooditem</a>
-  <table>
-    <tr>
-      <th>Name</th>
-    </tr>
-    <% @fooditems.each do |fooditem| %>
-      <tr>
-        <td><%= fooditem.name %></td>
-        <td><a href="/dashboard/fooditems/<%= fooditem.id %>/show">Show</a></td>
-      </tr>
-    <% end %>
-  </table>
+<div class="content">
+  <div class="sub-nav">
+    <h3 class="title">Food Items</h3>
+    <a href="/dashboard/fooditems/new" class="btn-green">Add Fooditem</a>
+  </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="pad-21">Name</th>
+          <th>Catagory</th>
+          <th>Cusine</th>
+          <th>Unit of Issue</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <% @fooditems.each do |fooditem| %>
+        <tr>
+          <td><%= fooditem.name %></td>
+          <td><%= fooditem.catagory.name %></td>
+          <td><%= fooditem.cuisine %></td>
+          <td><%= fooditem.unit_of_issue %></td>
+          <td>
+            <a href="#" class="update-link"> Details</a>
+            <a href="#" class="update-link">Update</a>
+            <a href="#" class="del-link">Delete</a>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+</div>

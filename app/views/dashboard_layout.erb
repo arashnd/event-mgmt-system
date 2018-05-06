@@ -29,7 +29,8 @@
           </div>
         </header>
         <div class="user-info">
-          <img src="/images/avatar.jpg" alt="" id="avatar">
+          <img src="https://res.cloudinary.com/fypeventapp/image/upload/<%= "#{current_user.dp_public_id}.#{current_user.dp_format}" %>" alt="" id="avatar">
+
           <ul>
             <li><%= current_user.first_name %></li>
             <li><%= current_user.last_name %></li>
@@ -38,10 +39,10 @@
         <div class="nav">
           <ul>
             <% if admin_user? %>
-              <li><a href="#"><i class="fa fa-group"></i>Users</a></li>
-              <li><a href="#"><i class="fa fa-calendar"></i>Events</a></li>
+              <li><a href="/users/"><i class="fa fa-group"></i>Users</a></li>
+              <li><a href="/dashboard/events"><i class="fa fa-calendar"></i>Events</a></li>
               <li><a href="/dashboard/venues/"><i class="fa fa-map"></i>Venues</a></li>
-              <li><a href="#"><i class="fa fa-cutlery"></i> Food Items</a></li>
+              <li><a href="/dashboard/fooditems/"><i class="fa fa-cutlery"></i> Food Items</a></li>
             <% else %>
               <li><a href="/dashboard/events"><i class="fa fa-calendar"></i>My events</a></li>
               <li><a href="/dashboard/venues"><i class="fa fa fa-map"></i>List Venues</a></li>
@@ -54,6 +55,7 @@
               <li><i class="fa fa-cogs"></i>App Settings</li>
             <% else %>
               <li><i class="fa fa-cogs"></i>Account Settings</li>
+              <!-- <li><a href="/users/edit"><i class="fa fa-cogs"></i>Account Settings</a></li> -->
             <% end %>
 
           </ul>

@@ -90,6 +90,10 @@ $( function() {
 } );
 </script>
 
+<div class="dashboard-errors">
+  <p>Following erros prevented this form being saved</p>
+</div>
+
 <div class="content">
   <div class="sub-nav">
     <h3 class="title">Book An Event</h3>
@@ -106,26 +110,26 @@ $( function() {
     </div>
     <div class="form-group">
       <label for="event[venue]">Venue</label>
-      <select class="" name="venue[venue_id]" id='venue'>
+      <select class="" name="event[venue_id]" id='venue'>
 
         <option value="">-- Select City First --</option>
 
       </select>
     </div>
     <div class="form-group">
-      <label for="event[date]">Date</label>
-      <input type="text" name="event[date]" value="" class="date-input" id="datepicker">
+      <label for="event[booking_date]">Date</label>
+      <input type="text" name="event[booking_date]" value="" class="date-input" id="datepicker">
     </div>
     <div class="form-group">
-      <label for="event[venue]">Time Slot</label>
-      <select class="" name="event[slot]" id="timeslot">
+      <label for="event[time_slot]">Time Slot</label>
+      <select class="" name="event[time_slot]" id="timeslot">
         <% %w(morning evening full_day).each do |slot| %>
           <option value="<%= slot %>"><%= slot.capitalize.tr('_', ' ') %></option>
         <% end %>
       </select>
     </div>
     <div class="form-group">
-      <label for="event[type]">Event Type</label>
+      <label for="event[event_type]">Event Type</label>
       <input type="radio" name="event[event_type]" value="birthday">
       <label for="event[event_type]">Birthday Party</label>
       <input type="radio" name="event[event_type]" value="wedding">
@@ -134,15 +138,15 @@ $( function() {
     <div class="form-group">
       <label for="event[seating_arrangement]">Seating Arrangement</label>
       <div class="seating">
-        <input type="radio" name="event[seating_arrangement]" value="wedding">
+        <input type="radio" name="event[seating_arrangement]" value="class">
         <img src="/images/class-layout.png" alt="" class="seating-img"> Class
       </div>
       <div class="seating">
-        <input type="radio" name="event[seating_arrangement]" value="wedding">
+        <input type="radio" name="event[seating_arrangement]" value="cluster">
         <img src="/images/u-layout.png" alt="" class="seating-img"> U-Shaped
       </div>
       <div class="seating">
-        <input type="radio" name="event[seating_arrangement]" value="wedding">
+        <input type="radio" name="event[seating_arrangement]" value="ushaped">
         <img src="/images/round-layout.png" alt="" class="seating-img"> Cluster
       </div>
     </div>

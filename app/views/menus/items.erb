@@ -1,0 +1,57 @@
+<div class="content">
+  <div class="sub-nav">
+      <h3 class="title">Menu Items</h3>
+  </div>
+
+  <div class="">
+    <form class="add-items" action="/dashboard/events/menu/<%= @menu.id %>/items" method="post">
+      <label for="fooditem[catagory]">Catagory</label>
+      <select class="" name="fooditem[catagory]">
+        <% @catagories.each do |catagory| %>
+          <option value="<%= catagory.id %>"><%= catagory.name %></option>
+        <% end %>
+      </select>
+
+      <label for="menu_item[fooditem_id]">Food Item</label>
+      <select class="" name="menu_item[fooditem_id]">
+        <% @fooditems.each do |fooditem| %>
+          <option value="<%= fooditem.id %>"><%= fooditem.name %></option>
+        <% end %>
+      </select>
+
+      <label for="menu_item[quantity]">Qty</label>
+      <input type="text" name="menu_item[quantity]" value="">
+
+      <input type="submit" name="" value="Add">
+    </form>
+  </div>
+
+</div>
+
+
+<h4>Item List</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="pad-21">Name</th>
+      <th>Catagory</th>
+      <th>Cusine</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <% @menu_items.each do |menu_item| %>
+    <tr>
+      <td><%= menu_item.fooditem.name %></td>
+      <td><%= menu_item.fooditem.catagory.name %></td>
+      <td><%= menu_item.fooditem.cuisine %></td>
+      <td><%= menu_item.quantity %></td>
+      <td>
+        <a href="#" class="update-link"> Details</a>
+        <a href="#" class="update-link">Update</a>
+        <a href="#" class="del-link">Delete</a>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -7,3 +7,25 @@
     background-color: #159f30;
     text-decoration: none;
     color: #fff; }
+
+.btn-green {
+  border: 1px solid #19BA38;
+  background-color: #19BA38;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-top: 8px;
+  margin-right: 21px;
+  padding-right: 18px;
+  padding-left: 12px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  transition: background-color 2s; }
+  .btn-green i {
+    padding-right: 9px; }
+  .btn-green:hover {
+    background-color: #159f30;
+    text-decoration: none;
+    color: #fff; }
